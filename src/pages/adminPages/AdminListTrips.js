@@ -1,33 +1,49 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Image } from 'react-bootstrap'
+import userService from '../../components/jwtComponents/services/user-service'
+import EventBus from '../../components/jwtComponents/EventBus'
+import authHeader from '../../components/jwtComponents/services/auth-header'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export default function AdminListTrips() {
-  const [data, setData] = useState([]);
+  const [content, setContent] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/user/alltrips')
-    .then(res => {
-      console.log(res)
-      setData(res.data)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-  }, []); 
+    userService.getListTripsBoard().then(
+      (response) => {
+        setContent(response.data);
+      },
+      (error) => {
+       // history.replace("/")
+        const _content =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
 
+        setContent(_content);
 
-    const totalItems = data.length
+        if (error.response && error.response.status === 401) {
+          EventBus.dispatch("logout");
+        }
+      }
+    );
+  }, []);
+ 
+    const totalItems = content.length
 
-     const deleteShoes = (shoesId) => {
-         axios.delete("http://localhost:8080/api/admin/admintrip?index="+shoesId)
+     const deleteShoes = (tripId) => {
+         axios.delete("http://localhost:8080/api/admin/admintrip?index="+tripId, { headers: authHeader() })
          .then(res => {
            if(res.data != null) {
              alert("shoes deleted!")
-             setData(data.filter(shoes => shoes.id !== shoesId))
+             setContent(content.filter(trip => trip._id !== tripId))
            }
          })
-     }
+     } 
 
   return (
       <div className="pt-2 d-flex justify-content-center">
@@ -46,10 +62,11 @@ export default function AdminListTrips() {
             <th scope="col">Hotel gwiazdki</th>
             <th scope="col">Cena</th>
             <th scope="col">Typ</th>
+            <th scope="col">Usun</th>
           </tr>
         </thead>
         <tbody>
-            {data.map((item) => 
+            {content.map((item) => 
           <tr>
             <th><Image src={item.img} thumbnail width="35" height="35"/></th>
             <td>{item.country}</td>
@@ -60,8 +77,7 @@ export default function AdminListTrips() {
             <td>{item.hotelStars}</td>
             <td>{item.price}</td>
             <td>{item.type}</td>
-            <td><button onClick={() => deleteShoes(item.id)}>DEL</button>
-              <button>UPD</button>
+            <td><FontAwesomeIcon icon={faTrash} onClick={() => deleteShoes(item._id)} />
             </td>
           </tr>
           )}

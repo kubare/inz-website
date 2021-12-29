@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { Card, Button } from "react-bootstrap";
 import moment from "moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { faPlane } from "@fortawesome/free-solid-svg-icons";
-import { faCity } from "@fortawesome/free-solid-svg-icons";
+import { MdPlace } from 'react-icons/md';
+import { BsCalendarDate } from 'react-icons/bs';
 
 const ProductMiniature = ({
   key,
@@ -32,10 +32,10 @@ const ProductMiniature = ({
             {country}
           </Card.Title>
           <Card.Text style={{ fontSize: "14px" }}>
-            <FontAwesomeIcon icon={faCity} /> {city}
+          <MdPlace style={{height:"25px", width:"25px"}}/>{city}
           </Card.Text>
           <Card.Text style={{ fontSize: "12px" }}>
-            <FontAwesomeIcon icon={faCalendar} /> {convertDateFrom} -{" "}
+            <BsCalendarDate style={{height:"15px", width:"15px"}}/> {convertDateFrom} -{" "}
             {convertDateTo} <br />
             <FontAwesomeIcon icon={faUsers} /> Liczba osób: {maxPersons} <br />
             <FontAwesomeIcon icon={faPlane} /> {transport}

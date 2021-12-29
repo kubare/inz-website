@@ -43,6 +43,7 @@ const NavbarTop = () => {
               <Nav.Link href="/wakacje">Wakacje</Nav.Link>
               {showAdminBoard && (<Nav.Link href="/alltrips">Lista wycieczek</Nav.Link>)}
               {showAdminBoard && (<Nav.Link href="/allusers">List uzytkownikow</Nav.Link>)}
+              {showAdminBoard && (<Nav.Link href="/addtrips">Dodaj wycieczke</Nav.Link>)}
               {currentUser ? (
               <>
                 <Nav.Link href="/profile">

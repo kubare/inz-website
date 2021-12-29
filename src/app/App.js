@@ -5,10 +5,11 @@ import HomePage from "../pages/HomePage";
 import TripDetails from "../pages/TripDetails"
 import ListTrips from "../pages/ListTrips"
 import AdminListTrips from "../pages/adminPages/AdminListTrips"
-import UsersListTrips from "../pages/adminPages/AdminListUsers"
+import AdminListUsers from "../pages/adminPages/AdminListUsers"
 import Profile from "../components/jwtComponents/Profile"
 import Login from "../components/jwtComponents/Login"
 import Register from "../components/jwtComponents/Register"
+import AdminAddTrips from '../pages/adminPages/AdminAddTrips'
 
 const App = () => {
   return (
@@ -22,7 +23,8 @@ const App = () => {
         <Route path="/majowka" element={<ListTrips />} />
         <Route path="/wakacje" element={<ListTrips />} />
         <Route path="/alltrips" element={<AdminListTrips />} />
-        <Route path="/allusers" element={<UsersListTrips />} />
+        <Route path="/allusers" element={<AdminListUsers />} />
+        <Route path="/addtrips" element={<AdminAddTrips />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
