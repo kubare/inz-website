@@ -58,6 +58,7 @@ export default function AddShoes() {
     setValues(initialValues);
   };
 
+
   const handleSetSeletcs = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
