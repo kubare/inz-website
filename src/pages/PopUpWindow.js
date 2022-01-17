@@ -8,6 +8,10 @@ import authHeader from "../components/jwtComponents/services/auth-header";
 const BookValues = {
   idTrip: "",
   username: "",
+  country: "",
+  cityTrip: "",
+  dateFrom: "",
+  dateTo: "",
   firstName: "",
   lastName: "",
   numberPhone: "",
@@ -24,6 +28,10 @@ function PopUpWindow(props) {
   const [values, setValues] = useState({
     idTrip: _id,
     username: currentUser.username,
+    country: props.country,
+    cityTrip: props.city,
+    dateFrom: props.dateFrom,
+    dateTo: props.dateTo,
     firstName: "",
     lastName: "",
     numberPhone: "",

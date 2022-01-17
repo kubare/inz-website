@@ -3,7 +3,8 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
-
+import { FcInfo } from "react-icons/fc";
+import './login.css';
 import AuthService from "./services/auth-service";
 
 const required = (value) => {
@@ -101,14 +102,15 @@ const Register = (props) => {
   };
 
   return (
-    <div className="col-md-12">
-      <div className="card card-container">
 
+      <div className="d-flex justify-content-center ">
+      <div className="login w-25 p-3">
+        <h1><FcInfo /> Rejestracja</h1>
         <Form onSubmit={handleRegister} ref={form}>
           {!successful && (
             <div>
-              <div className="form-group">
-                <label htmlFor="username">Username</label>
+              <div className="form-group" style={{paddingTop: "16px"}}>
+                <label htmlFor="username">Nazwa uzytkownika</label>
                 <Input
                   type="text"
                   className="form-control"
@@ -119,7 +121,7 @@ const Register = (props) => {
                 />
               </div>
 
-              <div className="form-group">
+              <div className="form-group" style={{paddingTop: "16px"}}>
                 <label htmlFor="email">Email</label>
                 <Input
                   type="text"
@@ -131,8 +133,8 @@ const Register = (props) => {
                 />
               </div>
 
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
+              <div className="form-group" style={{paddingTop: "16px"}}>
+                <label htmlFor="password">Haslo</label>
                 <Input
                   type="password"
                   className="form-control"
@@ -143,8 +145,8 @@ const Register = (props) => {
                 />
               </div>
 
-              <div className="form-group">
-                <button className="btn btn-primary btn-block">Sign Up</button>
+              <div className="form-group" style={{paddingTop: "16px", paddingBottom: "5px"}}>
+                <button className="btn btn-primary btn-block">Rejestracja</button>
               </div>
             </div>
           )}

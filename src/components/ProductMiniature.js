@@ -37,7 +37,6 @@ const ProductMiniature = ({
           <Card.Text style={{ fontSize: "12px" }}>
             <BsCalendarDate style={{height:"15px", width:"15px"}}/> {convertDateFrom} -{" "}
             {convertDateTo} <br />
-            <FontAwesomeIcon icon={faUsers} /> Liczba osób: {maxPersons} <br />
             <FontAwesomeIcon icon={faPlane} /> {transport}
           </Card.Text>
           <Link to={link}>

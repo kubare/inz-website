@@ -1,0 +1,12 @@
+.login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login h1 {
+    text-align: center;
+    border-bottom: 1px solid silver;
+    padding-bottom: 10px;
+}

@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-
+import { FcInfo } from "react-icons/fc";
+import './login.css';
 import AuthService from "./services/auth-service";
 
 const required = (value) => {
@@ -68,12 +69,13 @@ const Login = (props) => {
   };
 
   return (
-    <div className="col-md-12">
-      <div className="card card-container">
-
-        <Form onSubmit={handleLogin} ref={form}>
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
+    
+    <div className="d-flex justify-content-center ">
+      <div className="login w-25 p-3">
+        <h1><FcInfo /> Login</h1>
+        <Form onSubmit={handleLogin} ref={form} style={{paddingTop: "25px"}}>
+          <div className="form-group"> 
+          <label htmlFor="username">Nazwa uzytkownika</label>
             <Input
               type="text"
               className="form-control"
@@ -84,11 +86,11 @@ const Login = (props) => {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
+          <div className="form-group" style={{paddingTop: "16px"}}>
+          <label htmlFor="password">Haslo</label>
             <Input
               type="password"
-              className="form-control"
+              className="form-control " 
               name="password"
               value={password}
               onChange={onChangePassword}
@@ -96,8 +98,8 @@ const Login = (props) => {
             />
           </div>
 
-          <div className="form-group">
-            <button className="btn btn-primary btn-block" disabled={loading}>
+          <div className="form-group" style={{paddingTop: "16px"}}>
+            <button className="btn btn-primary" disabled={loading}>
               {loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}
@@ -105,17 +107,10 @@ const Login = (props) => {
             </button>
           </div>
 
-          {message && (
-            <div className="form-group">
-              <div className="alert alert-danger" role="alert">
-                {message}
-              </div>
-            </div>
-          )}
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
         </Form>
-      </div>
-    </div>
+        </div>
+        </div>
   );
 };
 

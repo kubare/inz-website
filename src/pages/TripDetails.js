@@ -70,6 +70,10 @@ const TripDetails = () => {
                 </Button>
               </td>
               <PopUpWindow
+                country={product.country}
+                city={product.city}
+                dateFrom={product.dateFrom}
+                dateTo={product.dateTo}
                 show={modalShow}
                 onHide={() => setModalShow(false)}
               />
